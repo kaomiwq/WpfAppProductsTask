@@ -1,0 +1,52 @@
+﻿<Window x:Class="WpfAppProductsTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppProductsTask"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Name="dataGridProducts" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectedCellsChanged="dataGridProducts_SelectedCellsChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ИД" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Stock}"></DataGridTextColumn>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ButtonDeleteCurrentProduct" Width="150" Click="ButtonDeleteCurrentProduct_Click">Удалить продукт</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="30,36,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100" IsReadOnly="True"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Margin="150,36,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="textBoxPrice" HorizontalAlignment="Left" Margin="280,36,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="textBoxStock" HorizontalAlignment="Left" Margin="410,36,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+
+        <Label Content="ИД" HorizontalAlignment="Left" Margin="30,9,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Название" HorizontalAlignment="Left" Margin="150,9,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Цена" HorizontalAlignment="Left" Margin="280,9,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Количество" HorizontalAlignment="Left" Margin="410,9,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        
+        <Button x:Name="buttonAdd" Content="Добавить новый продукт" HorizontalAlignment="Left" Margin="30,74,0,0" Grid.Row="1" VerticalAlignment="Top" Click="buttonAdd_Click" />
+        <Button x:Name="buttonUpdate" Content="Обновить текущий продукт" HorizontalAlignment="Left" Margin="190,74,0,0" Grid.Row="1" VerticalAlignment="Top" Click="buttonUpdate_Click" />
+        <Button x:Name="buttonClearFields" Content="Очистить поля продукта" HorizontalAlignment="Left" Margin="360,74,0,0" Grid.Row="1" VerticalAlignment="Top" Click="buttonClearFields_Click" />
+        <Button x:Name="SortByAsk" Content="Отсортировать по возрастанию" HorizontalAlignment="Left" Margin="30,114,0,0" Grid.Row="1" VerticalAlignment="Top" Click="SortByStockAsc_Click" />
+        <Button x:Name="SortByDesk" Content="Отсортировать по убыванию" HorizontalAlignment="Left" Margin="220,114,0,0" Grid.Row="1" VerticalAlignment="Top" Click="SortByStockDesc_Click" />
+
+    </Grid>
+
+</Window>
